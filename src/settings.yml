@@ -1,0 +1,53 @@
+#   This is the settings file for FAIO, in this file you can toggle all the features
+#   of the plugin on the fly, if you happen to mess up this file for some reason
+#   just delete this file and it will be regenerated the next time you restart the server! - FlixionYT
+#   There are only two options (true = enabled) (false = disabled)
+
+#   ftop - Refers to all /f top systems
+#   genbuckets - Refers to /genbucket and using of genbuckets
+#   tntfill - Refers to /tntfill
+#   untntfill - Refers to /untntfill
+#   sellchest - Refers to /sellchest
+#   crates - Refers to entire crates system including keys, opening and holograms
+#   mobstacking - Refers to mob stacking
+#   levelSystem - Refers to the entire faction leveling system including /f level and exp generation for factionsFly
+#   shockwaves - Refers to the /shockwave command as well as the use of shockwave tools
+#   combatlog - Refers to the logger system as well as blocked commands in combat
+#   factionsFly - Refers to the automatic factions fly in ally and own territoryManagement
+#   broadcaster - Refers to the autobroadcast messaging system
+#   cooldowns - Refers to the enderpearl, gapple and crapple usage cooldowns
+#   nocraft - Refers to the disabling of crafting certain items
+#   nightvision - Refers to the /nv command
+#   staffmode - Refers to the entire staffmode system including staffmode and the freeze features
+#   scoreboard - Refers to the entire scoreboard system
+#   customMessages - Refers to the custom join and leave messages
+#   territoryManagement - Refers to the toggling of setting homes and logging out in non ally or own territory
+#   webLimit - Refers to limiting cobweb placement per y-axis location
+#   borderPatches - Refers to all worldborder patches
+#   chunkBusters - Refers to all chunkbuster features
+#   banknotes - Refers to all banknote features
+
+ftop: true
+genbuckets: true
+sellchest: true
+tntfill: true
+untntfill: true
+crates: true
+mobstacking: true
+levelSystem: true
+shockwaves: true
+combatlog: true
+factionsFly: true
+broadcaster: true
+cooldowns: true
+nocraft: true
+nightvision: true
+staffmode: true
+scoreboard: true
+customMessages: true
+territoryManagement: true
+webLimit: true
+borderPatches: true
+chunkBusters: true
+banknotes: true
+

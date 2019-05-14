@@ -1,0 +1,420 @@
+#######################################################################################
+#######################################################################################
+#######################################################################################
+#####                                                                             #####
+#####                        FAIO - Factions All-In-One                           #####
+#####                         Created By @With/Flixion                            #####
+#####                                                                             #####
+#######################################################################################
+#######################################################################################
+#######################################################################################
+
+#   If you mess this file up by deleting things and the plugin no longer runs, just delete
+#   this file and it will re-create a default file for you to change again!
+
+#   MySQL database credentials as provided by a host or local server - The plugin will NOT work without this!
+database:
+  password: pass
+  username: user
+  name: databaseName
+  port: 3306
+  IP: 10.0.0.2
+  
+#   GenBucket settings:
+#   blocksPerSecond - 20 Ticks = 1 Second, higher values can cause lag, recommended to be 1-2 blocks per second!
+#   %material% - Material types: Sand, Cobblestone & Obsidian
+#   %direction% - Direction types: Vertical & Horizontal
+#   ItemID - The item you would like a GenBucket to be, changing this mid game will cause old items to be un-usable!
+#   Costs - Self explanatory, the costs you would like each genbucket to cost, this goes for both horizontal and vertical
+
+genbuckets:
+  blocksPerSecond: 1
+  genBucketName: '&8[&4%direction% &e%material% GenBucket&8]'
+  genBucketLore:
+    - '&eThis mystical bucket contains a liquid'
+    - '&ecapable of creating %material% out of'
+    - '&ethin air!'
+    - ' '
+    - '&cPlace against a block to use'
+  genBucketItemID: 335
+  obsidianCost: 10000
+  sandCost: 5000
+  cobblestoneCost: 100
+
+#   SellChest & SellInv settings:
+#   Radius - The block radius that will be searched around the player for chests (Shape cuboid around the player)
+#            making this radius too big will result in lag if used by a lot of players (Recommended 5)
+#   SellableItems - Format: ItemName#Price - Eg. STONE#50.0 (Must match the minecraft item name enum!)
+#   %amount% - Quantity of an item sold
+#   %item% - Name of the item
+#   %money% - Amount the item quantity was sold for
+
+sellchest:
+  radius: 5
+  sellText: '&4&l(!) &ex%amount% %item% sold for &a$%money%'
+  sellableItems:
+    - IRON_INGOT#50
+    - DIAMOND#100
+    - GOLD_INGOT#75
+    - GOLD_NUGGET#5
+    - ARROW#5
+    - BONE#5
+    - SULPHUR#15
+    - STRING#5
+
+#   TNTFill settings:
+#   Radius - The block radius that will be searched around the player for dispensers (Shape cuboid around player)
+#            making this radius too big will result in lag if used by a lot of players (Recommended 5 blocks)
+#   %amountFilled% - Number of dispeners successfully filled
+#   %fillAmount% - The amount of TNT specified to be filled
+#   %amountNotFilled% - Number of dispensers not filled due to insufficient TNT
+tntfill:
+  radius: 5
+  successFillText: '&4&l(!) &ex%amountFilled% Dispensers filled with &ax%fillAmount% TNT'
+  failFillText: '&4&l(!) &ex%amountNotFilled% Dispensers NOT filled with &ax%fillAmount% TNT'
+  noNearbyDispensersText: '&4&l(!) There are no nearby dispensers to be filled!'
+
+#   UnTNTFill settings:
+#   Radius - The block radius that will be searched around the player for dispensers (Shape cuboid around player)
+#            making this radius too big will result in lag if used by a lot of players (Recommended 5 blocks)
+#   %unFilledAmount% - Amount of TNT accumulated by unfilling dispensers
+
+untntfill:
+  radius: 5
+  unFillText: '&4&l(!) &ex%unFilledAmount% TNT was removed from nearby dispensers'
+  noNearbyDispensersUnfillText: '&4&l(!) There are no nearby dispensers to be unfilled!'
+  noInventorySpaceText: '&4&l(!) You do not have any available inventory space!'
+  
+#   Crates settings:
+#   hologramTitleFormat - The format of the hologram that will be displayed above the crateParticleEffect
+#   crateParticleEffect - The particle effect that will be played around the crate
+#   %crateName% - Name of the crate being handled
+#   %target% - Target receiving a key
+#   %itemWon% - Item won from opening a key
+#   %amount% - Amount of keys given
+
+crates:
+  hologramTitleFormat: '&4&l(!) &e%name% &bCrate &4&l(!)'
+  createCrateSuccessText: '&eYou have successfully created a new crate: &4%crateName%'
+  giveKeyTargetText: '&eYou have received &4x%amount% %crateName% &ekey!'
+  giveKeySenderText: '&eYou have given &4x%amount% %crateName% &ekey to player: &4%target%'
+  insufficientKeysText: '&eYou have insufficient keys to open this crate!'
+  winItemText: '&eYou won the &a%itemWon% &efrom the &4%crateName% &ecrate!'
+  
+#   Level settings:
+#   expPerMinute - The amount of exp generated per minute by each player in the faction (Double value)
+#   upgradeCost - The total amount of exp required to upgrade to the next f level (Double value)
+#   %faction% - Faction that has upgraded their level
+#   %level% - Level that the above faction has upgraded to
+
+flevel:
+  expPerMinute: 10.0
+  notInAFactionText: '&4&l(!) You are not in a faction!'
+  broadcastFactionUpgradeNotification: '&4&l(!) &eFaction: &a%faction% &ehas upgraded to level: &4%level%'
+  upgradeCosts:
+    - 2#100
+    - 3#200
+    - 4#300
+    - 5#400
+    - 6#500
+    - 7#600
+    - 8#700
+    - 9#800
+    - 10#1000
+    
+#   FTop Settings:
+#   refreshRate - How often to refresh f top totals in minutes
+#   blockValues - Block value, use block name Enums!
+#   spawnerValues - Spawner values, use mob name Enums!
+#   enchantValues - Enchantment values, use enchantment Enums!
+#   displayInformationFormat - The format of text displayed when using the f top command to list factionsfly
+#   %rank% - The rank of the faction
+#   %factionName% - The name of the faction
+#   %value% - The value of the faction
+
+ftop:
+  includePlayerWealth: true
+  displayInformationFormat: '&7* &4#%rank% &e%factionName% &7- &e$%value%'
+  blockValues:
+    - DIAMOND_BLOCK#100
+    - GOLD_BLOCK#50
+    - IRON_BLOCK#25
+  spawnerValues:
+    - IRON_GOLEM#1000000
+    - BLAZE#800000
+    - ENDERMAN#700000
+    - CREEPER#900000
+    - ZOMBIE#200000
+    - SKELETON#100000
+    - SPIDER#50000
+    - CAVE_SPIDER#50000
+  enchantValues:
+    - PROTECTION_ENVIRONMENTAL#10
+
+#   Mob Stacking:
+#   stackRadius - Area to check for mobs to merge into a stack (Integer)
+#   stackableEntities - Mob types that will be stacked from spawners, use mob Enums!
+
+mobstacking:
+  stackRadius: 15
+  stackableEntities:
+    - IRON_GOLEM
+    - BLAZE
+    - ZOMBIE
+    - SKELETON
+    - CREEPER
+    - PIG_ZOMBIE
+    
+#   Shockwave settings:
+#   shockwaveDefaultEnchantments - The default enchantments to be added to the item, format: enchantment Enum#Enchantment tier, eg. DURABILITY#3 - Unbreaking 3
+#   %breakRadius% - The break radius of the pickaxe, eg. 3x3, 5x5
+#   %toolType% - The shockwave tool type, shovel or pickaxe
+
+shockwave:
+  shockwaveName: '&8[&4%breakRadius% &eShockwave %toolType%&8]'
+  shockwaveDefaultEnchantments:
+    - DIG_SPEED#5
+    - DURABILITY#3
+  shockwaveLore:
+    - '&eThis mystical tool is destructive'
+    - '&ecapable of destroying a vast amount'
+    - '&eof blocks in a %breakRadius% area'
+    - ' '
+    - '&cBreak a block to active the effect'
+    
+#   CombatLog settings:
+#   tagTime - The duration that the combat tag will last in seconds
+#   loggerNameFormat - The text that will be displayed above a players combat loggerNameFormat
+#   %playerName% - The players name that has combat logged
+#   blockedCommands - These commands will be unable to be used in combat (Do not include the /)
+combatlog:
+  tagTime: 30
+  loggerNameFormat: '&4&l(!) &e%playerName%s &4Combat Logger! &4&l(!)'
+  blockedCommands:
+    - warp
+    - home
+    - tpaccept
+    - tpahere
+    - tpyes
+  
+#   FactionsFly settings:
+#   disableWhenNearbyEnemyBlocks - Radius to disable a players fly when an enemy is near (Blocks)
+
+factionsfly:
+  disableWhenNearbyEnemyBlocks: 10
+  nearbyEnemyWhileFlyingText: '&4&l(!) There is a nearby enemy, fly has been disabled'
+  leaveOwnTerritoryWhileFlyingText: '&4&l(!) You have left your own/allies land, fly has been disabled'
+  inCombatWhileFlyingText: '&4&l(!) You have entered combat, fly has been disabled'
+  
+#   Autobroadcaster settings:
+#   broadcastInterval - How often messages should be broadcasted in seconds
+#   broadcastHeader - The text above the actual broadcast message
+#   broadcastFooter - The text below the actual broadcast message
+#   broadcastPrefix - The text to display before the broadcast message
+#   messagesToBroadcast - A list of the messages to broadcast, uses color codes as well as string formatting like \n or \t
+
+broadcaster:
+  broadcastInterval: 30
+  broadcastHeader: '&m--------------------------------'
+  broadcastFooter: '&m--------------------------------'
+  broadcasterPrefix: '&8[&6Broadcaster&8]'
+  messagesToBroadcast:
+    - '&aTell your all your friends to buy FAIO!'
+    
+#   Cooldown settings:
+#   Item/Use cooldowns in Seconds
+    
+cooldowns:
+  superGoldenApple: 60
+  regularGoldenApple: 3
+  enderpearlThrow: 15
+  
+# NoCraft settings:
+#   items - The material Enums of the uncraftable items
+nocraft:
+  cannotCraftItemText: '&4&l(!) Crafting of this item has been disabled'
+  items:
+    - HOPPER
+    - GOLDEN_APPLE
+    
+nightvision:
+  enabledText: '&4&l(!) You have enabled NightVision'
+  disabledText: '&4&l(!) You have disabled NightVision'
+  
+#   Player Management settings:
+#   Custom features as requested
+playerManagement:
+  logoutInOtherTerritory: false
+  secondsToRemoveHomes: 60
+  
+#   Staffmode settings:
+#   ItemEnums - The item enum for each of the items to be used in the staffmode inventory
+#   ItemName - The names of the items in staffmode inventory
+#   ItemLore - The lore to be applied to each item in the staffmode inventory
+#   %staffPlayer% - The player that has enabled or disabled staffmode
+#   frozenInventory - Upon freezing a player an inventory is opened with a single item, you can set the lore and name of this item to tell
+#                     the player to join TS for example
+#   %staffMember% - The player that performs a staff chat action
+
+staffmode:
+  freezeItemEnum: ICE
+  randomTeleportItemEnum: LEASH
+  leaveStaffModeEnum: REDSTONE
+  knockbackItemEnum: BLAZE_ROD
+  cpsCheckerItemEnum: SLIME_BALL
+  
+  freezeItemName: '&b&lFreeze Tool'
+  randomTeleportItemName: '&e&lRandom TP'
+  leaveStaffModeItemName: '&4&lLeave Staffmode'
+  knockbackItemName: '&6&lKnockback Tool'
+  cpsCheckerItemName: '&2&lCPS Checker'
+  
+  freezeItemLore:
+    - '&6Left Click to toggle freeze'
+  randomTeleportItemLore:
+    - '&6Right Click to randomly teleport to a player'
+  leaveStaffModeItemLore:
+    - '&6Right Click to leave staffmode'
+  knockbackItemLore:
+    - '&6Hit a player with this to test knockback'
+  cpsCheckerItemLore:
+    - '&6Right Click a player to test their CPS over 5 seconds'
+    
+  staffModeEnabledText: '&4&l(!) You have enabled staffmode, you are now completely invisible to all players'
+  staffModeDisabledText: '&4&l(!) You have disabled staffmode, you are now visible to all players'
+  staffEnteredStaffModeNotification: '&4&l(!) %staffPlayer% has entered staffmode'
+  staffLeftStaffModeNotification: '&4&l(!) %staffPlayer% has left staffmode'
+  
+  frozenInventoryItemMessage: '&4&lYou have been frozen!'
+  frozenInventoryItemLore:
+    - '&6&lJoin ts.teamspeak.com in 5 minutes'
+    - '&4&lLogging/Disconnecting will result in a ban'
+    - '&aYou are being screenshared!'
+    
+  chatLockBroadcastMessage: '&4&l(!) &eChat is now &4Locked! by &6%staffMember%!'
+  chatUnlockBroadcastMessage: '&a&l(!) &eChat is not &2Unlocked! by &6%staffMember%!'
+  chatClearBroadcastMessage: '&4&l(!) Chat has been cleared by &6%staffMember%!'
+
+#   Scoreboard settings:
+#   Prefixes - These are the titles that appear before each line on the scoreboard eg. Rank: GOLDEN_APPLE
+#   %kothName% - The name of the current active kothName%
+
+scoreboard:
+  scoreboardTitle: '&4&lTest Scoreboard'
+  rankPrefix: '&b&lRank:'
+  onlinePrefix: '&2&lOnline:'
+  factionPrefix: '&4&lFaction:'
+  moneyPrefix: '&6&lMoney:'
+  flyPrefix: '&3&lFly:'
+  combatPrefix: '&c&lCombat:'
+  enderpearlPrefix: '&5&lPearl:'
+  kothPrefix: '&e&l%kothName%:'
+  
+#   Mob Drop settings:
+#   Only the mobs listed below are enabled for custom drops (All mobs are planned for a future update)
+#   You can configure the drops for the following mobs below, the default drops are CANCELLED.
+#   The format is Material Enum#DropChance - The drop chance can be > 100, eg. 200 == 2 item drops, 500 == 5 item drops, < 100 == a chance to drop
+mobdrops:
+  creeperDrops:
+    - TNT#25
+    - SULPHUR#100
+    - SAND#250
+  endermanDrops:
+    - OBSIDIAN#50
+    - ENDER_PEARL#100
+  zombieDrops:
+    - IRON_INGOT#25
+    - GOLD_NUGGET#50
+  skeletonDrops:
+    - ARROW#100
+    - BONE#50
+  blazeDrops:
+    - BLAZE_ROD#50
+    - NETHER_STAR#5
+  cowDrops:
+    - LEATHER#75
+    - COOKED_BEEF#100
+  spiderDrops:
+    - STRING#100
+    - SPIDER_EYE#50
+  zombiePigDrops:
+    - GOLD_INGOT#50
+    - GOLDEN_APPLE#10
+  ironGolemDrops:
+    - IRON_INGOT#250
+    - IRON_BLOCK#10
+    
+#   Banknote Settings:
+#   noteName - The default banknote item name
+#   noteItemType - The item type for a banknote (Material ENUM)
+#   itemLore - The default lore for the banknote item
+#   %amount% - The amount applicable to the current note
+#   noteUseMessage - The message displayed upon using a banknote
+#   withdrawFailMessage - The message displayed upon using /withdraw with an invalid amount/insufficent amount
+#   withdrawSuccessMessage - The message displayed upon using /withdraw successfully
+
+banknote:
+  noteName: '&aBank Note: &e$%amount%'
+  noteItemType: PAPER
+  noteLore:
+    - '&eRight Click this note to apply this'
+    - '&eto your balance'
+    - '&4Amount: $%amount%'
+  noteUseMessage: '&4&l(!) &eYou have redeemed a banknote for &a$%amount%'
+  withdrawFailMessage: '&4&l(!) You cannot withdraw this amount!'
+  withdrawSuccessMessage: '&4&l(!) You have successfully withdrawn &a$%amount%'
+  
+#   Chunkbuster Settings:
+#   busterName - The default name for a chunkbuster item
+#   busterItemType - The item type for a chunkbuster (Material ENUM)
+#   busterLore - The default lore for a chunkbuster item
+#   busterSuccessMessage - The message displayed upon using a chunkbuster
+#   busterFailMessage - The message displayed upon using a chunkbuster but failing due to territory/permission
+#   busterTargetCommandMessage - The message displayed to the target upon receiving a chunkbuster via commands
+#   busterSenderCommandMessage - The message displayed to the sender of a chunkbuster via commands
+#   %amount% - Amount of chunkbusters in transaction after command
+#   %target% - The target player when sending chunkbusters
+#   blacklistedBlocks - These blocks will not be removed upon using a chunkbuster, they will be ignored! (Material ENUMS only!)
+
+chunkbuster:
+  busterName: '&aChunkBuster Tool'
+  busterItemType: TORCH
+  busterLore:
+    - '&eThis mystical object is capable of removing'
+    - '&elarge amounts of land in seconds!'
+    - '&4Right Click to use this tool'
+  busterSuccessMessage: '&4&l(!) &eThe ground beneath you crumbles as the chunkbuster works its magic'
+  busterFailMessage: '&4&l(!) Chunkbusters are only usable in your own land!'
+  busterTargetCommandMessage: '&4&l(!) You have received x%amount% chunkbuster(s)'
+  busterSenderCommandMessage: '&4&l(!) You have sent x%amount% chunkbuster(s) to %target%'
+  blacklistedBlocks:
+    - BEDROCK
+    - MOB_SPAWNER
+  
+#   Miscellanious settings:
+#   customJoinMessages - These messages will be sent to the player on joining the server
+#   customLeaveMessage - This message will be broadcasted to the server upon a player leaving
+#   %player% - The name of the player joining or leaving the server
+#   ironGolemHealth - Set the health of iron golems 1-100
+#   ironGolemsSpawnOnFire - Removes the need for lava to kill iron golems as they spawn and die on fire
+#   waterBreaksRedstone - Should flowing water break redstone, repeaters, and other redstone 
+#   stackingOnWorldborder - Should falling block entities like sand stack against the worldborder
+#   silentTNT - Should TNT, Creeper Egg & Ghast explosions make noise
+#   webLimit - Amount of web blocks allowed per y-axis location
+
+misc:
+  customJoinMessages:
+    - '&m--------------------------------'
+    - '&eWelcome &4%player% &eto the server!'
+    - '&m--------------------------------'
+  customLeaveMessage: '&4&l(!) %player% has left the server'
+  ironGolemHealth: 5
+  ironGolemsSpawnOnFire: true
+  waterBreaksRedstone: false
+  stackingOnWorldborder: true
+  silentTNT: false
+  webLimit: 2
+  webLimitReachedMessage: '&4&l(!) You cannot place any more cobwebs in this location!'
+  useCrophopper: true
+  essentialsWorthHook: true
+  

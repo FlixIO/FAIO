@@ -1,0 +1,6 @@
+name: FAIO-Factions-All-In-One
+author: [Flix.IO]
+version: 1.4.4
+main: io.flixion.main.FAIOPlugin
+description: Factions All-In-One for FactionsUUID, MassiveCore & LegacyFactions
+softdepend: [Factions, Vault, PermissionsEx, Essentials, KoTH, LuckPerms]
